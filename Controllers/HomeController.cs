@@ -16,9 +16,16 @@ namespace Dojo_Survey.Controllers
 
         // //localhost:5000/result
         [HttpPost("result")]
-        public IActionResult Result(Survey yourSurvey)
+        public ViewResult Result(Survey yourSurvey)
         {
-            return View(yourSurvey);
+            if(ModelState.IsValid)
+            {
+                return View(yourSurvey);
+            }
+            else
+            {
+                return View("Index");
+            }
         }
 
     }
